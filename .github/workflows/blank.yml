@@ -32,6 +32,7 @@ jobs:
       - name: Run a multi-line script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.pull_request.number }}
         run: |
-          gh pr edit --title "PR title"
+          gh pr edit "$pr_number" --title "PR title"
           
