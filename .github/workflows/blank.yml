@@ -34,5 +34,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr info
+          gh pr view ${{ github.event.pull_request.number }}
           
