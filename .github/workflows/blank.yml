@@ -34,8 +34,10 @@ jobs:
       - name: Run a multi-line script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          X: gh pr view ${{ github.event.pull_request.number }} --json labels
+          #X: gh pr view ${{ github.event.pull_request.number }} --json labels
         run: |
+          gh pr view ${{ github.event.pull_request.number }} --json labels
+          gh pr view ${{ github.event.pull_request.number }} --json labels --jq '.labels'
           echo "$X"
           echo "${{ toJson(github.event.pull_request.labels) }}"  
           
