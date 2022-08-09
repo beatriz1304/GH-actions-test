@@ -8,13 +8,13 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-  label: 
-    types: [created, deleted, edited]
+    types:
+      - labeled
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow run is made up of one or more jobs that can run sequentially or in parallels
 jobs:
   # This workflow contains a single job called "build"
   build:
