@@ -35,4 +35,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr view ${{ github.event.pull_request.number }}
+          gh pr view ${{ github.event.pull_request.number }} --json labels
           
