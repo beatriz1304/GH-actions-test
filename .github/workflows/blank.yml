@@ -36,5 +36,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           #X: gh pr view ${{ github.event.pull_request.number }} --json labels
         run: |
-          echo "${{ toJson(github.event.pull_request.labels) }}"  
+          echo $ {{ !contains(github.event.pull_request.labels.*.names, 'dependencies') }}
           
