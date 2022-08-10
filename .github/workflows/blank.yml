@@ -35,8 +35,9 @@ jobs:
       - name: Run a multi-line script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          X: ${{ !contains(github.event.pull_request.labels.*.name, 'dependencies')}}
           #X: gh pr view ${{ github.event.pull_request.number }} --json labels
         run: |
-          echo $ {{ !contains(github.event.pull_request.labels.*.name, 'dependencies') }}
+          echo $X
 
           
