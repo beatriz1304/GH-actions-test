@@ -35,7 +35,8 @@ jobs:
       - name: Run a multi-line script
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          X: ${{ contains(github.event.pull_request.labels.*.name, 'bug')}}
+          X: ${{ contains(github.event.pull_request.labels.*.name, "runChecks:\ All")}}
+
           #X: gh pr view ${{ github.event.pull_request.number }} --json labels
         run: |
           echo $X
