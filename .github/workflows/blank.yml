@@ -1,18 +1,10 @@
-
-
 name: CI
-
-
 on:
   issues:
     types: [opened, edited, milestoned]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
-        run: |
-          echo TEST
-          echo ${{ github.event }}
-          echo "${{ fromJSON(github.event) }}"
+        run: echo TEST
