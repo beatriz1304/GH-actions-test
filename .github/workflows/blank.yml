@@ -6,19 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script
+      - name: Run ISSUE
         run: echo ${{ github.event.issue }} 
 
-      - name: Run a one-line script
-        run: echo ${{ github.event.label }} 
+      - name: Run LABELS
+        run: echo ${{ github.event.labels }} 
 
-      - name: Run a one-line script
+      - name: Run ACTION
         run: echo ${{ github.event.action }} 
 
-      - name: Run a one-line script
+      - name: Run ASSIGNEE
         run: echo ${{ github.event.action.assignee }} 
         
-      - name: Run a one-line script
+      - name: Run TITLE
         run: echo ${{ github.event.issue.title }}    
 
 
