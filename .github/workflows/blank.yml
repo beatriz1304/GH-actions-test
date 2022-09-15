@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: Run a one-line script
         run: |
+          echo ${{ github.event }}
           echo ${{ fromJSON(github.event) }}
           echo ${{ fromJSON(github.event.issues) }}
           echo ${{ github.event.issues }}
