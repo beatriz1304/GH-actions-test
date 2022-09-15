@@ -6,11 +6,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run ISSUE
+      - name: Run ISSUE - ${{ github.event.issue }}  - ${{ fromJSON(github.event.issue) }} 
         run: echo ${{ github.event.issue }} 
 
-      - name: Run LABELS
+      - name: Run LABELS- ${{ github.event.labels }}  - ${{ fromJSON(github.event.labels) }} 
         run: echo ${{ github.event.labels }} 
+        
+      - name: Run LABEL- ${{ github.event.label }}  - ${{ fromJSON(github.event.label) }} 
+        run: echo ${{ github.event.label }} 
 
       - name: Run ACTION
         run: echo ${{ github.event.action }} 
