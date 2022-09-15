@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
-        run: | 
+        run: |
           echo ${{ fromJSON(github.event) }}
           echo ${{ fromJSON(github.event.issues) }}
           echo ${{ github.event.issues }}
