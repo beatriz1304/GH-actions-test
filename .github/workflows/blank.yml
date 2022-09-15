@@ -6,7 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run ISSUE - ${{ github.event.issue }}  - ${{ fromJSON(github.event.issue) }} 
+      - uses: hmarr/debug-action@v2
+      - name: Run ISSUE - ${{ github.event.issue }}  - ${{ toJSON(github.event.issue) }} 
         run: echo ${{ github.event.issue }} 
 
       - name: Run LABELS- ${{ github.event.labels }}  - ${{ fromJSON(github.event.labels) }} 
