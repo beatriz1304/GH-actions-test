@@ -8,7 +8,8 @@ jobs:
     steps:
       - uses: hmarr/debug-action@v2
       - name: Run LABELS- ${{ github.event.issue.labels.*.name }}  - ${{ contains(github.event.issue.labels.*.name, 'RFC')}}
-        run: echo ${{ github.event.issue.labels.*.name }} 
+        run: echo "${{fromJson(github.event.issue.labels.*.name)}}" 
+        
         
 
               
