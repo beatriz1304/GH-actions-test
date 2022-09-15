@@ -1,5 +1,6 @@
 name: CI
 on:
+  pull_request:
   issues:
     types: [opened, edited, milestoned]
 jobs:
@@ -8,6 +9,8 @@ jobs:
     steps:
       - uses: hmarr/debug-action@v2
       - name: Run LABELS- ${{ github.event_name }}
+        run: echo oi
+      - name: LINK ${{ github.event.issue.html_url }}
         run: echo oi
       - name: Dump GitHub context
         env:
