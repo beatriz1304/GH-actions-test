@@ -7,23 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: hmarr/debug-action@v2
-      - name: Run ISSUE - ${{ github.event.issue }}  - ${{ toJSON(github.event.issue) }} 
-        run: echo ${{ github.event.issue }} 
-
-      - name: Run LABELS- ${{ github.event.labels }}  - ${{ fromJSON(github.event.labels) }} 
+      - name: Run LABELS- ${{ github.event.issue.labels.*.name }}  - "${{ contains(github.event.issue.labels.*.name, 'RFC')}}"
         run: echo ${{ github.event.labels }} 
         
-      - name: Run LABEL- ${{ github.event.label }}  - ${{ fromJSON(github.event.label) }} 
-        run: echo ${{ github.event.label }} 
-
-      - name: Run ACTION
-        run: echo ${{ github.event.action }} 
-
-      - name: Run ASSIGNEE
-        run: echo ${{ github.event.action.assignee }} 
-        
-      - name: Run TITLE
-        run: echo ${{ github.event.issue.title }}    
-
 
               
