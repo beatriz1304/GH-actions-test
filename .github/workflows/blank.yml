@@ -42,6 +42,14 @@ jobs:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
         run: echo "$MATRIX_CONTEXT"
         
+      - name: Set variable
+        id: version
+        run: echo "version_number=1.2.3" >> "$GITHUB_OUTPUT"
+      
+      - name: Consume Variable
+        id: consume
+        run: echo "${{ steps.version.outputs.version_number }}"
+        
         
 
               
