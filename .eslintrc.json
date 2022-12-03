@@ -13,8 +13,8 @@
   },
   "extends": ["plugin:react/recommended", "plugin:react/jsx-runtime"],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "semi": [2, "always"]
+    "react/react-in-jsx-scope": "off"
+    // "semi": [2, "always"]
   },
   "settings": {
     "react": {
