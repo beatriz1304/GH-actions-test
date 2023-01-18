@@ -1,0 +1,20 @@
+# Used for keeping dependencies up to date
+version: 2
+updates:
+    - package-ecosystem: 'npm'
+      directory: '/'
+      schedule:
+          # defaults to monday
+          interval: 'weekly'
+      reviewers:
+          - 'beatriz1304'
+      pull-request-branch-name:
+          separator: '-'
+      labels:
+          - 'dependabot'
+          - 'dependencies'
+      commit-message:
+          prefix: 'Update: '
+      ignore:
+          - dependency-name: '*'
+            update-types: ['version-update:semver-major', 'version-update:semver-patch']
