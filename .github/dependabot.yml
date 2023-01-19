@@ -14,7 +14,7 @@ updates:
           - 'dependabot'
           - 'dependencies'
       commit-message:
-          prefix: 'Update: '
+          prefix: '[Dependabot] Update: '
       ignore:
           - dependency-name: '*'
             update-types: ['version-update:semver-major', 'version-update:semver-patch']
