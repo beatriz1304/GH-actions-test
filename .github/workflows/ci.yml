@@ -27,18 +27,18 @@ jobs:
     # strategy:
     #   fail-fast: false
     #   matrix: ${{ fromJson(needs.read-json.outputs.matrix) }}
-    steps:
-     - name: Read the output from job1
-        run: |
-          output_from_job1="${{ needs.read-json.outputs.matrix }}"
-          echo "Output from job1: $output_from_job1"
-      - name: Print Gradle and Module Values
-        run: |
-          echo "Gradle value: ${{ matrix.config }}"
-          # Get the values from the previous job's outputs
-          gradle=$([[ "${{ matrix.config.gradle }}" == "null" ]] && echo "Gradle not found" || echo "${{ matrix.config.gradle }}")
-          module=$([[ "${{ matrix.config.module }}" == "null" ]] && echo "Module not found" || echo "${{ matrix.config.module }}")
+    # steps:
+    #  - name: Read the output from job1
+    #     run: |
+    #       output_from_job1="${{ needs.read-json.outputs.matrix }}"
+    #       echo "Output from job1: $output_from_job1"
+    #   - name: Print Gradle and Module Values
+    #     run: |
+    #       echo "Gradle value: ${{ matrix.config }}"
+    #       # Get the values from the previous job's outputs
+    #       gradle=$([[ "${{ matrix.config.gradle }}" == "null" ]] && echo "Gradle not found" || echo "${{ matrix.config.gradle }}")
+    #       module=$([[ "${{ matrix.config.module }}" == "null" ]] && echo "Module not found" || echo "${{ matrix.config.module }}")
 
-          # Print the extracted values
-          echo "Gradle value: $gradle"
-          echo "Module value: $module"
+    #       # Print the extracted values
+    #       echo "Gradle value: $gradle"
+    #       echo "Module value: $module"
