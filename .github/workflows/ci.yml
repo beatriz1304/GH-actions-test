@@ -1,5 +1,4 @@
-name: CI
-
+name: Read from json file
 on:
   push:
     branches:
