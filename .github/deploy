@@ -1,0 +1,11 @@
+{
+  "config": [
+    {
+      "module": "MODULE",
+      "gradle": "GRADLE",
+      "staging": false,
+      "live": true,
+      "database": "x"
+    },
+    ]
+}
