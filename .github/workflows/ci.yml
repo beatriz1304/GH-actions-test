@@ -7,6 +7,8 @@ on:
 jobs:
   read-json:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set_modules.outputs.matrix }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -19,9 +21,7 @@ jobs:
           set -Exeuo pipefail
           content=$(tr '\n\r' ' ' < deploy)
           echo "matrix=$content" >> "$GITHUB_OUTPUT"
-  debug:
-    name: ${{ needs.read-json.outputs.matrix }}
-    runs-on: ubuntu-latest
+
     
   print-values:
     needs: read-json
