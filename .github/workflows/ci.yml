@@ -28,7 +28,7 @@ jobs:
     #   matrix: ${{ fromJson(needs.read-json.outputs.matrix) }}
     steps:
      - name: Read the output from job1
-        run: |
+       run: |
           output_from_job1="${{ needs.read-json.outputs.matrix }}"
           echo "Output from job1: $output_from_job1"
     #   - name: Print Gradle and Module Values
