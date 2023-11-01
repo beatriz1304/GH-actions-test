@@ -1,41 +1,39 @@
-name: ci
+name: CI
 
-on: pull_request
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  set-matrix:
-    name: Configure matrix for gradle modules
-    runs-on: [ default ]
-    outputs:
-      matrix: ${{ steps.set_modules.outputs.matrix }}
+  read-json:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
-      - id: set_modules
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Read Values from JSON
+        id: set_modules
         shell: bash
-        working-directory: ./.github/config
+        working-directory: ./.github
         run: |
           set -Exeuo pipefail
-          content=$(tr '\n\r' ' ' < deployments)
+          content=$(tr '\n\r' ' ' < deploy)
           echo "matrix=$content" >> "$GITHUB_OUTPUT"
-  
-  deploy-gradle-modules:
-    needs:
-      - set-matrix
-    name: Release and Deploy "${{ matrix.config.module }}"
-    runs-on: [ default ]
-    timeout-minutes: 10
-    concurrency: ${{ matrix.config.module }}
+
+  print-values:
+    needs: read-json
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.set-matrix.outputs.matrix) }}
-
+      matrix: ${{ fromJson(needs.read-json.outputs.matrix) }}
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
-      - id: set_modules
-        shell: bash
-        working-directory: ./.github/config
+      - name: Print Gradle and Module Values
         run: |
-          set -Exeuo pipefail
-          echo "${{ matrix.config.module }}"
+          # Get the values from the previous job's outputs
+          gradle=$([[ "${{ matrix.config.gradle }}" == "null" ]] && echo "Gradle not found" || echo "${{ matrix.config.gradle }}")
+          module=$([[ "${{ matrix.config.module }}" == "null" ]] && echo "Module not found" || echo "${{ matrix.config.module }}")
+
+          # Print the extracted values
+          echo "Gradle value: $gradle"
+          echo "Module value: $module"
