@@ -33,7 +33,7 @@ jobs:
       matrix: ${{ fromJson(needs.read-json.outputs.matrix) }}
     steps:
       - name: Read the output from ${{ needs.read-json.outputs.matrix }}
-        run: gradle :${{ matrix.config.module }}:jib
+        run: gradle :${{ matrix.config.gradle && matrix.config.gradle || matrix.config.module }}:jib
      
 
   # print-values:
