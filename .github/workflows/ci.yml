@@ -23,13 +23,13 @@ jobs:
   print-values:
     needs: read-json
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJson(needs.read-json.outputs.matrix) }}
+    # strategy:
+    #   fail-fast: false
+    #   matrix: ${{ fromJson(needs.read-json.outputs.matrix) }}
     steps:
      - name: Read the output from job1
        run: |
-          output_from_job1="${{ matrix.config }}"
+          output_from_job1="${{ fromJson(needs.read-json.outputs.matrix) }}"
           echo "Output from job1: $output_from_job1"
     #   - name: Print Gradle and Module Values
     #     run: |
